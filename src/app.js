@@ -1,4 +1,3 @@
-console.log("hello");
 const express = require("express");
 const User = require("./models/user");
 const app = express();
@@ -17,7 +16,6 @@ app.post("/signup", async (req, res) => {
 
 app.get("/users", async (req, res) => {
   const userEmail = req.body.email;
-  //console.log(userEmail);
   try {
     
     const users = await User.find({email : userEmail});
@@ -70,8 +68,6 @@ app.delete("/user", async (req, res) => {
 app.patch("/user", async (req, res) => {
   const userId = req.body.userId;
   const data = req.body;
-  console.log(userId);
-  console.log(data);
   try {
     const user = await User.findByIdAndUpdate(userId, data);
     res.send("user updated successfully")
